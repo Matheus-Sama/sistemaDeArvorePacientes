@@ -14,10 +14,7 @@ public class Aplicacao {
         Scanner ler = new Scanner(System.in);
         Paciente paciente;
         Arvore arvore = new Arvore();
-    
         
-        
-
         while(rodando){
             System.out.println("==================================================");
             System.out.println("Bem Vindo Ao Sistema De Cadastramento De Pacientes");
