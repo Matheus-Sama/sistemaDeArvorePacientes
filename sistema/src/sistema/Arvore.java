@@ -91,15 +91,62 @@ public class Arvore {
         }
         return 0;
     }
-    public void removerPaciente(No lugar, int prontuario){
-        No local = lugar;
-        if(lugar.esquerda != null){
-            if(lugar.esquerda.paciente.getProtuario() == prontuario){
-                local.esquerda = lugar.esquerda.esquerda;
-            
-            }
-            removerPaciente(lugar.esquerda, prontuario);
+
+    public int maiorProtuario(No lugar){
+
+        if(lugar.direita != null){
+            maiorProtuario(lugar.direita);
         }
+        return lugar.paciente.getProtuario();
+
+    }
+    
+    public int menorProtuario(No lugar){
+        if(lugar.esquerda != null){
+            menorProtuario(lugar.esquerda);
+        }
+        return lugar.paciente.getProtuario();
+    }
+
+    public int getTamanho(){
+        return tamanho;
+    }
+    
+    public boolean removerPaciente(No lugar, int prontuario){
+        No local = this.raiz;
+        No localAtual = null;
         
+        while(local != null){
+            if(local.paciente.getProtuario() == prontuario){
+                break;
+            }else if(prontuario < local.paciente.getProtuario()){
+                localAtual = local;
+                local = local.esquerda;
+            }else{
+                localAtual = local;
+                local = local.direita;
+            }
+            if(local != null){
+                
+                if(local.direita != null && local.esquerda != null){
+
+                }else if(local.direita != null){
+
+                }else if(local.esquerda != null){
+
+                }else{
+                    if(local.paciente.getProtuario() > localAtual.paciente.getProtuario()){
+                        localAtual.direita = null;
+                    }else{
+                        localAtual.esquerda = null;
+                    }
+                }
+
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return (local != null);
     }
 }
