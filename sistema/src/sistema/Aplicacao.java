@@ -29,5 +29,7 @@ public class Aplicacao {
         }
         System.out.println("\nPRE-ORDEM: ");
         arvore.preOrdem(arvore.raiz);
+        System.out.println("Buscando por protuário: ");
+        arvore.buscarProtuario(arvore.raiz, 8);
     }
 }
