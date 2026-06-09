@@ -92,26 +92,26 @@ public class Arvore {
         return 0;
     }
 
-    public int maiorProtuario(No lugar){
+    public Paciente maiorProtuario(No lugar){
 
         if(lugar.direita != null){
             maiorProtuario(lugar.direita);
         }
-        return lugar.paciente.getProtuario();
+        return lugar.paciente;
 
     }
     
-    public int menorProtuario(No lugar){
+    public Paciente menorProtuario(No lugar){
         if(lugar.esquerda != null){
             menorProtuario(lugar.esquerda);
         }
-        return lugar.paciente.getProtuario();
+        return lugar.paciente;
     }
 
     public int getTamanho(){
         return tamanho;
     }
-    
+
     public boolean removerPaciente(No lugar, int prontuario){
         No local = this.raiz;
         No localAtual = null;
