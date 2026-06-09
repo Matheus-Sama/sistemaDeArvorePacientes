@@ -29,7 +29,7 @@ public class Arvore {
     }
 
     public void preOrdem(No lugar){
-        System.out.println(" " + lugar.paciente.toString());
+        System.out.println(lugar.paciente.toString());
         if(lugar.esquerda != null){
             preOrdem(lugar.esquerda);
         }

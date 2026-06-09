@@ -12,13 +12,14 @@ public class Aplicacao {
         Scanner ler = new Scanner(System.in);
         Paciente paciente;
         Arvore arvore = new Arvore();
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 2; i++){
             System.out.println("Digite o nome do paciente: ");
             nome = ler.nextLine();
             System.out.println("Digite a idade do paciente: ");
             idade = ler.nextInt();
             System.out.println("Digite o número do prontuário: ");
             numero = ler.nextInt();
+            ler.nextLine();
             System.out.println("Digite a especialidade da consulta: ");
             especialidade = ler.nextLine();
             System.out.println("Digite o dia da consulta: ");
@@ -26,5 +27,7 @@ public class Aplicacao {
             paciente = new Paciente(numero, nome, idade, especialidade, dataConsulta);
             arvore.inserir(paciente, arvore.raiz);
         }
+        System.out.println("\nPRE-ORDEM: ");
+        arvore.preOrdem(arvore.raiz);
     }
 }
