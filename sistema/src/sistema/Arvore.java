@@ -63,18 +63,16 @@ public class Arvore {
 
     public void buscarProtuario(No lugar, int protuario){
         
-        if(lugar.esquerda != null){
-            if(lugar.paciente.getProtuario() == protuario){
-                System.out.println(lugar.paciente.toString());
-            }
-            buscarProtuario(lugar.esquerda, protuario);
+        if (lugar == null) {
+            return;
         }
-        if(lugar.direita != null){
-            if(lugar.paciente.getProtuario() == protuario){
-                System.out.println(lugar.paciente.toString());
-            }
-            buscarProtuario(lugar.direita, protuario);
+
+        if (lugar.paciente.getProtuario() == protuario) {
+            System.out.println(lugar.paciente.toString());
         }
+
+        buscarProtuario(lugar.esquerda, protuario);
+        buscarProtuario(lugar.direita, protuario);
     }
     
     public int altura(No lugar){
