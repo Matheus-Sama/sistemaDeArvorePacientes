@@ -58,24 +58,30 @@ public class Aplicacao {
                     break;
                 
                 case "2":
-
-                    int protuario;
-                    System.out.println("Digite o número do prontuário: ");
-                    protuario = ler.nextInt();
-                    ler.nextLine();
-                    arvore.buscarProtuario(arvore.raiz, protuario);
+                    if(arvore.raiz != null){
+                        int protuario;
+                        System.out.println("Digite o número do prontuário: ");
+                        protuario = ler.nextInt();
+                        ler.nextLine();
+                        arvore.buscarProtuario(arvore.raiz, protuario);
+                    }else{
+                        System.out.println("Sem Pacientes Na Lista!");
+                    }
                     break;
                 case "3":
-
-                    int localPaciente;
-                    System.out.println("Digite o nome do paciente para remover: ");
-                    localPaciente = ler.nextInt();
-                    ler.nextLine();
-                    if(arvore.removerProtuario(arvore.raiz, localPaciente)){
-                        System.out.println("Removido Com Sucesso!");
-                    }else{
-                        System.out.println("Não Encontrado!");
-                    }
+                    if(arvore.raiz != null){
+                        int localPaciente;
+                        System.out.println("Digite o nome do paciente para remover: ");
+                        localPaciente = ler.nextInt();
+                        ler.nextLine();
+                        if(arvore.removerProtuario(arvore.raiz, localPaciente)){
+                            System.out.println("Removido Com Sucesso!");
+                        }else{
+                            System.out.println("Não Encontrado!");
+                        }
+                }else{
+                    System.out.println("Sem Pacientes Na Lista!");
+                }
                     break;
                 case "4":
 
