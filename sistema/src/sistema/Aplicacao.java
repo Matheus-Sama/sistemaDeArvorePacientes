@@ -71,7 +71,7 @@ public class Aplicacao {
                 case "3":
                     if(arvore.raiz != null){
                         int localPaciente;
-                        System.out.println("Digite o nome do paciente para remover: ");
+                        System.out.println("Digite o Número Do Protuário: ");
                         localPaciente = ler.nextInt();
                         ler.nextLine();
                         if(arvore.removerProtuario(arvore.raiz, localPaciente)){
