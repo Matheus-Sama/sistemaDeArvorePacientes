@@ -95,6 +95,10 @@ public class Arvore {
     public Paciente maiorProtuario(No lugar){
 
         if(lugar.direita != null){
+
+            if(lugar.direita.direita == null){
+                return lugar.direita.paciente;
+            }
             maiorProtuario(lugar.direita);
         }
         return lugar.paciente;
@@ -102,51 +106,74 @@ public class Arvore {
     }
     
     public Paciente menorProtuario(No lugar){
+       
         if(lugar.esquerda != null){
+            
+            if(lugar.esquerda.esquerda == null){
+                return lugar.esquerda.paciente;
+            }
+
             menorProtuario(lugar.esquerda);
         }
-        return lugar.paciente;
+            return lugar.paciente;
+        
     }
 
     public int getTamanho(){
         return tamanho;
     }
 
-    public boolean removerPaciente(No lugar, int prontuario){
-        No local = this.raiz;
-        No localAtual = null;
-        
-        while(local != null){
-            if(local.paciente.getProtuario() == prontuario){
-                break;
-            }else if(prontuario < local.paciente.getProtuario()){
-                localAtual = local;
-                local = local.esquerda;
-            }else{
-                localAtual = local;
-                local = local.direita;
+   public boolean removerProtuario(No lugar, int protuario){
+
+        if(lugar == null){
+            return false;
+        }
+        if(protuario < lugar.paciente.getProtuario()){
+
+            if(removerProtuario(lugar.esquerda, protuario)){
+                return true;
             }
-            if(local != null){
-                
-                if(local.direita != null && local.esquerda != null){
 
-                }else if(local.direita != null){
+        }else if(protuario > lugar.paciente.getProtuario()){
 
-                }else if(local.esquerda != null){
+            if(removerProtuario(lugar.direita, protuario)){
+                return true;
+            }
 
-                }else{
-                    if(local.paciente.getProtuario() > localAtual.paciente.getProtuario()){
-                        localAtual.direita = null;
-                    }else{
-                        localAtual.esquerda = null;
-                    }
+        }else{
+            tamanho--;
+
+            if(lugar.esquerda == null && lugar.direita == null){
+
+                if(lugar == raiz){
+                    raiz = null;
                 }
 
-                return true;
-            }else{
-                return false;
             }
+            else if(lugar.esquerda == null){
+
+                lugar.paciente = lugar.direita.paciente;
+                lugar.esquerda = lugar.direita.esquerda;
+                lugar.direita = lugar.direita.direita;
+            }
+        
+            else if(lugar.direita == null){
+                lugar.paciente = lugar.esquerda.paciente;
+                lugar.direita = lugar.esquerda.direita;
+                lugar.esquerda = lugar.esquerda.esquerda;
+            }
+        
+            else{
+
+                Paciente substituto = menorProtuario(lugar.direita);
+                lugar.paciente = substituto;
+                removerProtuario(lugar.direita, substituto.getProtuario());
+                tamanho++;
+            }
+
+            return true;
         }
-        return (local != null);
+
+        return false;
     }
 }

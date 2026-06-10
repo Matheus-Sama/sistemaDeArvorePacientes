@@ -14,7 +14,7 @@ public class Aplicacao {
         Scanner ler = new Scanner(System.in);
         Paciente paciente;
         Arvore arvore = new Arvore();
-        
+
         while(rodando){
             System.out.println("==================================================");
             System.out.println("Bem Vindo Ao Sistema De Cadastramento De Pacientes");
@@ -62,44 +62,77 @@ public class Aplicacao {
                     int protuario;
                     System.out.println("Digite o número do prontuário: ");
                     protuario = ler.nextInt();
+                    ler.nextLine();
                     arvore.buscarProtuario(arvore.raiz, protuario);
                     break;
                 case "3":
 
-                    String localPaciente;
+                    int localPaciente;
                     System.out.println("Digite o nome do paciente para remover: ");
-                    localPaciente = ler.nextLine();
+                    localPaciente = ler.nextInt();
+                    ler.nextLine();
+                    if(arvore.removerProtuario(arvore.raiz, localPaciente)){
+                        System.out.println("Removido Com Sucesso!");
+                    }else{
+                        System.out.println("Não Encontrado!");
+                    }
                     break;
                 case "4":
 
                     System.out.println("Lista Exibida Em Ordem Crescente:");
-                    arvore.ordemCres(arvore.raiz);
+                    if(arvore.raiz != null){
+                        arvore.ordemCres(arvore.raiz);
+                    }else{
+                        System.out.println("Sem Pacientes Na Lista!");
+                    }
                     break;
                 case "5":
-
-                    System.out.println("\nPré-Ordem: ");
-                    arvore.preOrdem(arvore.raiz);
+                    if(arvore.raiz != null){
+                        System.out.println("\nPré-Ordem: ");
+                        arvore.preOrdem(arvore.raiz);
+                    }else{
+                        System.out.println("Sem Pacientes Na Lista!");
+                    }
                     break;
                 case "6":
-                    System.out.println("Pós-Ordem:");
-                    arvore.posOrdem(arvore.raiz);
+                    if(arvore.raiz != null){
+                        System.out.println("Pós-Ordem:");
+                        arvore.posOrdem(arvore.raiz);
+                    }else{
+                        System.out.println("Sem Pacientes Na Lista!");
+                    }
                     break;
                 case "7":
-                    System.out.println("Paciente Com Maior Protuário: ");
-                    paciente = arvore.maiorProtuario(arvore.raiz);
-                    paciente.toString();
+                    if(arvore.raiz != null){
+                        System.out.println("Paciente Com Maior Protuário: ");
+                        paciente = arvore.maiorProtuario(arvore.raiz);
+                        System.out.println(paciente.toString());
+                    }else{
+                        System.out.println("Sem Pacientes Na Lista!");
+                    }
                     break;
                 case "8":
-                    System.out.println("Paciente Com Menor Protuário: ");
-                    paciente = arvore.menorProtuario(arvore.raiz);
-                    paciente.toString();
+                    if(arvore.raiz != null){
+                        System.out.println("Paciente Com Menor Protuário: ");
+                        paciente = arvore.menorProtuario(arvore.raiz);
+                        System.out.println(paciente.toString());
+                    }else{
+                        System.out.println("Sem Pacientes Na Lista!");
+                    }
                     break;
                 case "9":
-                    System.out.println("Quantidade de Clientes Cadastrados: " + arvore.getTamanho());
+                    if(arvore.raiz != null){
+                        System.out.println("Quantidade de Clientes Cadastrados: " + arvore.getTamanho());
+                    }else{
+                        System.out.println("Sem Pacientes Na Lista!");
+                    }
                     break;
                 case "10":
-                    System.out.println("Altura Da Arvore: " + arvore.altura(arvore.raiz));
-
+                    if(arvore.raiz != null){
+                        System.out.println("Altura Da Arvore: " + arvore.altura(arvore.raiz));
+                    }else{
+                        System.out.println("Sem Pacientes Na Lista");
+                    }
                     break;
                 case "11":
                     rodando = false;
