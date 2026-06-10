@@ -99,7 +99,7 @@ public class Arvore {
             if(lugar.direita.direita == null){
                 return lugar.direita.paciente;
             }
-            maiorProtuario(lugar.direita);
+            return maiorProtuario(lugar.direita);
         }
         return lugar.paciente;
 
@@ -113,7 +113,7 @@ public class Arvore {
                 return lugar.esquerda.paciente;
             }
 
-            menorProtuario(lugar.esquerda);
+            return menorProtuario(lugar.esquerda);
         }
             return lugar.paciente;
         
